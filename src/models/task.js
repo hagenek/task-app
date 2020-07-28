@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const validator = require("validator");
 
 const taskScheme = new mongoose.Schema({
   description: {
@@ -12,6 +11,27 @@ const taskScheme = new mongoose.Schema({
     required: false,
     default: false,
   },
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: "User"
+  }
+}, {
+  timestamps: true
 });
 
-module.exports = mongoose.model("tasks", taskScheme);
+// Ready function to add middleware.
+
+/* taskScheme.pre("save", async function (next) {
+  const task = this;
+
+  if (task.isModified("description")) {
+    console.log("This line executed before the update was saved")
+  }
+
+  next();
+})
+ */
+
+const Task = mongoose.model("Task", taskScheme);
+module.exports = Task;
