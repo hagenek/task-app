@@ -38,6 +38,10 @@ app.post("/upload", upload.single("upload"),  (req, res) => {
   res.status(400).send({error: error.message})
 }) 
 
+app.get("/", (req, res) => {
+  res.send("Able to respond")
+})
+
 app.use(express.json());
 app.use(userRouter);
 app.use(taskRouter);
