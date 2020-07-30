@@ -1,15 +1,11 @@
 // Main app file
-
 const express = require("express");
 require("./db/mongoose");
 const userRouter = require("./routers/user");
 const taskRouter = require("./routers/task").taskRouter;
 const auth = require("./middleware/auth")
-
 const app = express();
 const port = process.env.PORT 
-
-
 
 // FILE UPLOAD SKELETON 
 
@@ -27,10 +23,6 @@ const upload = multer({
 
   }
 })
-
-const errorMiddleware = (req, res, next)  => {
-  throw new Error("From my middleware")
-}
 
 app.post("/upload", upload.single("upload"),  (req, res) => {
   res.send()
