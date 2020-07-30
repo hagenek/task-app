@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "node src/index.js",
     "dev": "env-cmd -f ./config/dev.env nodemon ./src/index.js -e js,hbs"
   },
@@ -26,7 +26,8 @@
   },
   "devDependencies": {
     "env-cmd": "^10.1.0",
-    "nodemon": "^2.0.4",
-    "heroku": "^7.42.5"
+    "heroku": "^7.42.5",
+    "jest": "^26.2.1",
+    "nodemon": "^2.0.4"
   }
 }
