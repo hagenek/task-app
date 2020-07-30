@@ -15,7 +15,7 @@ const sendCancelationEmail = (email,  name) => {
   sgMail.send({
     to: email,
     from: "georghagen@gmail.com",
-    subject: "Goodbye for now!",
+    subject: "Goodbye for now my friend!",
     text: `We are sooo! sad to see you go, ${name}, Let us know if there is something we could have done to make you stay a little longer.`
   })
 }
