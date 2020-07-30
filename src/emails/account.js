@@ -16,8 +16,12 @@ const sendCancelationEmail = (email,  name) => {
     to: email,
     from: "georghagen@gmail.com",
     subject: "Goodbye for now!",
+<<<<<<< HEAD
     text: `We are sad to see you go, ${name}, Let us know if there is something we could have done to make you stay as a user with us.`
     text: `We are sooo! sad to see you go, ${name}, Let us know if there is something we could have done to make you stay.`
+=======
+    text: `We are sooo! sad to see you go, ${name}, Let us know if there is something we could have done to make you stay a little longer.`
+>>>>>>> changeEmailMessage
   })
 }
 
