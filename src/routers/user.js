@@ -56,8 +56,7 @@ router.get("/users/:id/avatar", async(req, res) => {
 	}
 })
 
-
-
+// Lage ny bruker
 router.post('/users', async (req, res) => {
 	const user = new User(req.body)
 
