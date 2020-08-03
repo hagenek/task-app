@@ -4,9 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "env-cmd ./config/test.env jest --watch",
     "start": "node src/index.js",
     "dev": "env-cmd -f ./config/dev.env nodemon ./src/index.js -e js,hbs"
+  },
+  "jest": {
+    "testEnvironment": "node"
   },
   "keywords": [],
   "author": "",
@@ -28,6 +31,7 @@
     "env-cmd": "^10.1.0",
     "heroku": "^7.42.5",
     "jest": "^26.2.1",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "supertest": "^4.0.2"
   }
 }
