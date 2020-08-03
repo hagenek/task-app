@@ -54,9 +54,6 @@ router.get("/tasks/:id", auth,  async (req,res) => {
 }
 })
 
-
-
-
 router.post("/tasks", auth, async (req, res) => {
 
   const task = new Task({
@@ -66,7 +63,7 @@ router.post("/tasks", auth, async (req, res) => {
 
   try {
     const savedTask = await task.save();
-    res.status(202).send(savedTask);
+    res.status(201).send(savedTask);
   } catch (error) {
     return res.status(400).send(error)
   }
@@ -154,4 +151,4 @@ router.delete("/tasks/:id", async (req,res) => {
   }
 }); 
 
-module.exports.taskRouter = router;
+module.exports = router;
