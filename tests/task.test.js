@@ -1,6 +1,7 @@
 const request = require("supertest");
 const Task = require("../src/models/task");
 const app = require("../src/app");
+
 const {   setupDatabase,
   userOneId,
   userOne,
@@ -8,7 +9,9 @@ const {   setupDatabase,
   userTwoId,
   taskOne,
   taskTwo,
-  taskThree,} = require("./fixtures/db")
+  taskThree,
+  taskTwoId,
+} = require("./fixtures/db")
 
 beforeEach(setupDatabase);
 
@@ -35,15 +38,16 @@ test("Should return the correct amount of tasks given a user", async () => {
     expect(response.body.length).toBe(2)
 })
 
-test("User two should not be able to delete user one's task", async () => {
+test('Should not delete other users tasks', async () => {
   const response = await request(app)
-    .delete(`tasks/${taskTwo._id}`)
-    .set("Authorization", `Bearer ${userTwo.tokens[0].token}`)
-    .expect(401)
-
-  const task = await Task.findById(taskTwo._id)
-  expect(task).toEqual(taskTwo)
+      .delete(`/tasks/${taskOne._id}`)
+      .set('Authorization', `Bearer ${userTwo.tokens[0].token}`)
+      .send()
+      .expect(404)
+  const task = await Task.findById(taskOne._id)
+  expect(task).not.toBeNull()
 })
+
 
 
 /* router.delete('/users/:id', auth, async (req, res) => {

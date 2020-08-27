@@ -20,7 +20,7 @@ const userTwoId = new mongoose.Types.ObjectId();
 const userTwo =  {
   _id: userTwoId,
   name: "Bob",
-  email: "Bob@example.com",
+  email: "bob@example.com",
   password: "20what!!",
   tokens: [{
     token: jwt.sign({_id: userTwoId}, process.env.JWT_SECRET)
@@ -45,7 +45,7 @@ const taskThree = {
   _id: new mongoose.Types.ObjectId(),
   description: "Third task",
   completed: true,
-  owner: userTwo._id,
+  owner: userTwo._id
 }
 
 const setupDatabase = async () => {
@@ -55,10 +55,10 @@ const setupDatabase = async () => {
   await new Task(taskTwo).save()
   await new Task(taskThree).save()
   await new User(userOne).save();
+  await new User(userTwo).save();
   }
 
 module.exports = {
-  setupDatabase,
   userOneId,
   userOne,
   userTwo,
@@ -66,4 +66,5 @@ module.exports = {
   taskOne,
   taskTwo,
   taskThree,
+  setupDatabase
 }

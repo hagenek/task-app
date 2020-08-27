@@ -82,6 +82,7 @@ test("Should delete account for user", async () => {
   expect(user).toBeNull;
 
 })
+
 test("Should not delete profile for unauthenticated user", async () => {
   await request(app)
     .delete("/users/me")
